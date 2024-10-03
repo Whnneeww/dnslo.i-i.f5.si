@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNSレコード管理</title>
+</head>
+<body>
+    <h1>DNSレコード管理サイト</h1>
+    <form action="/add" method="post">
+        <input type="text" name="domain" placeholder="ドメイン名" required>
+        <input type="text" name="ip" placeholder="IPアドレス" required>
+        <button type="submit">レコード追加</button>
+    </form>
+    <h2>DNSレコード一覧</h2>
+    <ul>
+        {% for domain, records in records.items() %}
+            <li>{{ domain }}: {{ records[0][0] }} 
+                <a href="/delete/{{ domain }}">削除</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
